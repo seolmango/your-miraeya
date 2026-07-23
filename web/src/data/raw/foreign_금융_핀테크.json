@@ -1,0 +1,17 @@
+[
+  { "korean": "제이피모건", "original": "JPMorgan" },
+  { "korean": "비자", "original": "Visa" },
+  { "korean": "마스터카드", "original": "Mastercard" },
+  { "korean": "페이팔", "original": "PayPal" },
+  { "korean": "골드만삭스", "original": "Goldman Sachs" },
+  { "korean": "버크셔해서웨이", "original": "Berkshire Hathaway" },
+  { "korean": "뱅크오브아메리카", "original": "Bank of America" },
+  { "korean": "웰스파고", "original": "Wells Fargo" },
+  { "korean": "모건스탠리", "original": "Morgan Stanley" },
+  { "korean": "아메리칸익스프레스", "original": "American Express" },
+  { "korean": "스퀘어", "original": "Square" },
+  { "korean": "스트라이프", "original": "Stripe" },
+  { "korean": "어펌", "original": "Affirm" },
+  { "korean": "로빈후드", "original": "Robinhood" },
+  { "korean": "시티그룹", "original": "Citigroup" }
+]

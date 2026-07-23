@@ -1,0 +1,143 @@
+.sectors {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
+}
+
+.sectors__head {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.sectors__title {
+    font-size: 1.6rem;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+}
+
+.sectors__subtitle {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+}
+
+.sectors__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sectors__row {
+    border-bottom: 1px solid var(--line);
+}
+
+.sectors__row:first-child {
+    border-top: 1px solid var(--line);
+}
+
+.sectors__summary {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0.85rem 0;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+}
+
+.sectors__label-line {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-bottom: 0.4rem;
+}
+
+.sectors__badge {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    padding: 0.1rem 0.35rem;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    flex: 0 0 auto;
+}
+
+.sectors__badge--foreign {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+.sectors__label {
+    flex: 1;
+    font-size: 0.98rem;
+    color: var(--ink);
+}
+
+.sectors__average {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--seal);
+    font-variant-numeric: tabular-nums;
+}
+
+.sectors__chevron {
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+    flex: 0 0 auto;
+}
+
+.sectors__chevron--open {
+    transform: rotate(180deg);
+}
+
+.sectors__bar-track {
+    display: block;
+    height: 5px;
+    background: var(--paper-deep);
+}
+
+.sectors__bar-fill {
+    display: block;
+    height: 100%;
+    background: var(--ink);
+    opacity: 0.55;
+}
+
+.sectors__full {
+    list-style: none;
+    margin: 0 0 1rem;
+    padding: 0.5rem 0.75rem;
+    max-height: 16rem;
+    overflow-y: auto;
+    background: var(--paper-deep);
+}
+
+.sectors__full-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.3rem 0;
+    border-bottom: 1px dashed var(--line);
+    font-size: 0.85rem;
+}
+
+.sectors__full-row:last-child {
+    border-bottom: none;
+}
+
+.sectors__full-rank {
+    color: var(--ink-soft);
+    width: 1.6rem;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.sectors__full-name {
+    flex: 1;
+    color: var(--ink);
+}
+
+.sectors__full-score {
+    font-family: var(--font-display);
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+}

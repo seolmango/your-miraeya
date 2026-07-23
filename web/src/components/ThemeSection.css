@@ -1,0 +1,96 @@
+.theme {
+    max-width: 32rem;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3.5rem;
+}
+
+.theme__head {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.theme__title {
+    font-size: 1.6rem;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+}
+
+.theme__subtitle {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+}
+
+.theme__tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.theme__tab {
+    background: none;
+    border: none;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    cursor: pointer;
+    position: relative;
+    top: 1px;
+}
+
+.theme__tab--active {
+    color: var(--seal);
+    border-bottom: 2px solid var(--seal);
+}
+
+.theme__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 26rem;
+    overflow-y: auto;
+}
+
+.theme__toggle {
+    display: block;
+    margin: 1rem auto 0;
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    padding: 0.5rem 1.1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+}
+
+.theme__toggle:hover {
+    border-color: var(--seal);
+    color: var(--seal);
+}
+
+.theme__row {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.6rem 0.2rem;
+    border-bottom: 1px dashed var(--line);
+}
+
+.theme__rank {
+    font-family: var(--font-display);
+    color: var(--gold);
+    width: 1.4rem;
+    text-align: center;
+}
+
+.theme__name {
+    flex: 1;
+    color: var(--ink);
+}
+
+.theme__score {
+    font-family: var(--font-display);
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+}

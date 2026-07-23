@@ -1,0 +1,17 @@
+[
+  { "korean": "엔비디아", "original": "NVIDIA" },
+  { "korean": "에이앰디", "original": "AMD" },
+  { "korean": "인텔", "original": "Intel" },
+  { "korean": "브로드컴", "original": "Broadcom" },
+  { "korean": "퀄컴", "original": "Qualcomm" },
+  { "korean": "티에스엠씨", "original": "TSMC" },
+  { "korean": "마이크론", "original": "Micron" },
+  { "korean": "에이에스엠엘", "original": "ASML" },
+  { "korean": "텍사스인스트루먼츠", "original": "Texas Instruments" },
+  { "korean": "어플라이드머티리얼즈", "original": "Applied Materials" },
+  { "korean": "아날로그디바이스", "original": "Analog Devices" },
+  { "korean": "케이엘에이", "original": "KLA" },
+  { "korean": "램리서치", "original": "Lam Research" },
+  { "korean": "에이알엠", "original": "ARM" },
+  { "korean": "슈퍼마이크로", "original": "Supermicro" }
+]

@@ -1,0 +1,136 @@
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 62vh;
+    padding: 4rem 1.5rem 3.5rem;
+    position: relative;
+    transition: min-height 0.5s ease;
+}
+
+.hero--compact {
+    min-height: auto;
+    padding: 3.25rem 1.5rem 2.25rem;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 14px;
+    background:
+        linear-gradient(135deg, var(--paper) 25%, transparent 25%) -7px 0 / 14px 14px,
+        linear-gradient(225deg, var(--paper) 25%, transparent 25%) -7px 0 / 14px 14px;
+    background-color: var(--paper-deep);
+}
+
+.hero__inner {
+    max-width: 34rem;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero__title {
+    font-size: clamp(1.6rem, 4.6vw, 2.4rem);
+    line-height: 1.45;
+    color: var(--ink);
+    margin-bottom: 2.25rem;
+}
+
+.hero--compact .hero__title {
+    font-size: clamp(1.25rem, 3.2vw, 1.6rem);
+    margin-bottom: 1.5rem;
+}
+
+.hero__form {
+    display: flex;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 24rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hero__input {
+    flex: 1 1 14rem;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--ink);
+    padding: 0.6rem 0.25rem;
+    font-size: 1.15rem;
+    font-family: var(--font-body);
+    color: var(--ink);
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+.hero__input::placeholder {
+    color: var(--ink-soft);
+    opacity: 0.55;
+}
+
+.hero__input:focus {
+    outline: none;
+    border-bottom-color: var(--seal);
+}
+
+.hero__button {
+    flex: 0 0 auto;
+    background: var(--seal);
+    color: var(--paper);
+    border: none;
+    padding: 0.7rem 1.6rem;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+}
+
+.hero__button:hover {
+    background: var(--seal-deep);
+}
+
+.hero__button:active {
+    transform: translateY(1px);
+}
+
+.hero__error {
+    margin-top: 1rem;
+    color: var(--seal-deep);
+    font-size: 0.9rem;
+}
+
+.hero__info-toggle {
+    margin-top: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    opacity: 0.75;
+}
+
+.hero__info-toggle:hover {
+    color: var(--seal);
+    opacity: 1;
+}
+
+.hero__info {
+    margin-top: 0.75rem;
+    max-width: 24rem;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    background: var(--paper-deep);
+    padding: 0.9rem 1.1rem;
+    text-align: left;
+}

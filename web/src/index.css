@@ -1,0 +1,90 @@
+:root {
+  --paper: #f3ede0;
+  --paper-deep: #e8e0cd;
+  --ink: #1f1b16;
+  --ink-soft: #4a4136;
+  --seal: #b3231c;
+  --seal-deep: #7a1712;
+  --seal-soft: rgba(179, 35, 28, 0.1);
+  --gold: #b8892b;
+  --line: #c9bfa8;
+
+  --font-display: "Song Myung", "Noto Serif KR", serif;
+  --font-body: "Pretendard", -apple-system, "Malgun Gothic", sans-serif;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(31, 27, 22, 0.05), transparent 40%),
+    radial-gradient(circle at 88% 92%, rgba(179, 35, 28, 0.05), transparent 40%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(31, 27, 22, 0.015) 0px,
+      rgba(31, 27, 22, 0.015) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+.orig-tag {
+  color: var(--ink-soft);
+  opacity: 0.65;
+  font-size: 0.85em;
+  font-weight: normal;
+}
+
+::selection {
+  background: var(--seal);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--seal);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

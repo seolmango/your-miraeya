@@ -1,0 +1,37 @@
+.site-footer {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem 3rem;
+}
+
+.site-footer__ad {
+    margin-bottom: 1.5rem;
+}
+
+.site-footer__note {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    opacity: 0.8;
+    margin-bottom: 0.75rem;
+}
+
+.site-footer__links {
+    text-align: center;
+    font-size: 0.78rem;
+}
+
+.site-footer__link {
+    color: var(--ink-soft);
+    text-decoration: none;
+}
+
+.site-footer__link:hover {
+    color: var(--seal);
+    text-decoration: underline;
+}
+
+.site-footer__divider {
+    color: var(--line);
+    margin: 0 0.5rem;
+}

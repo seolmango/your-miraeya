@@ -1,0 +1,30 @@
+.ad-slot {
+    width: 100%;
+    border: 1px dashed var(--line);
+    background: repeating-linear-gradient(
+        135deg,
+        rgba(31, 27, 22, 0.02),
+        rgba(31, 27, 22, 0.02) 10px,
+        transparent 10px,
+        transparent 20px
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    color: var(--ink-soft);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+}
+
+.ad-slot__tag {
+    font-family: var(--font-display);
+    color: var(--seal);
+    border: 1px solid var(--seal);
+    padding: 0.05rem 0.4rem;
+    font-size: 0.7rem;
+}
+
+.ad-slot__label {
+    opacity: 0.7;
+}
