@@ -4,6 +4,12 @@
     padding: 2rem 1.5rem 3.5rem;
 }
 
+@media (min-width: 64rem) {
+    .theme {
+        max-width: 36rem;
+    }
+}
+
 .theme__head {
     text-align: center;
     margin-bottom: 1.5rem;
@@ -22,6 +28,7 @@
 
 .theme__tabs {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 0.25rem;
     margin-bottom: 1.5rem;
@@ -31,8 +38,9 @@
 .theme__tab {
     background: none;
     border: none;
-    padding: 0.6rem 0.9rem;
-    font-size: 0.88rem;
+    padding: 0.6rem 0.7rem;
+    font-size: 0.82rem;
+    white-space: nowrap;
     color: var(--ink-soft);
     cursor: pointer;
     position: relative;
@@ -42,6 +50,13 @@
 .theme__tab--active {
     color: var(--seal);
     border-bottom: 2px solid var(--seal);
+}
+
+@media (min-width: 30rem) {
+    .theme__tab {
+        padding: 0.6rem 1rem;
+        font-size: 0.88rem;
+    }
 }
 
 .theme__list {
@@ -86,7 +101,11 @@
 
 .theme__name {
     flex: 1;
+    min-width: 0;
     color: var(--ink);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .theme__score {

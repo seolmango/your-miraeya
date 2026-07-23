@@ -4,6 +4,12 @@
     padding: 3rem 1.5rem;
 }
 
+@media (min-width: 64rem) {
+    .ranking {
+        max-width: 44rem;
+    }
+}
+
 .ranking__head {
     margin-bottom: 1.5rem;
     text-align: center;
@@ -52,6 +58,7 @@
 }
 
 .ranking__name {
+    min-width: 0;
     font-size: 1rem;
     color: var(--ink);
     overflow: hidden;

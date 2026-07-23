@@ -25,6 +25,12 @@
     padding: 0 1.5rem;
 }
 
+@media (min-width: 64rem) {
+    .app__ad {
+        max-width: 44rem;
+    }
+}
+
 .app__topbar {
     position: sticky;
     top: 0;

@@ -25,11 +25,7 @@ export function Hero({ onSubmit, hasResult }: HeroProps) {
     return (
         <header className={`hero ${hasResult ? "hero--compact" : ""}`}>
             <div className="hero__inner">
-                <h1 className="hero__title">
-                    이름을 입력하면
-                    <br />
-                    어떤 기업이 당신을 원하는지 알려드립니다
-                </h1>
+                <h1 className="hero__title">이름을 입력하면 어떤 기업이 당신을 원하는지 알려드립니다</h1>
                 <form className="hero__form" onSubmit={handleSubmit}>
                     <input
                         className="hero__input"
