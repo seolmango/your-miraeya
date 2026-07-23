@@ -1,17 +1,35 @@
+.share {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.share__hint {
+    max-width: 18rem;
+    font-size: 0.72rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    text-align: center;
+}
+
 .share-button {
-    background: transparent;
-    border: 1px solid var(--ink);
-    color: var(--ink);
-    padding: 0.55rem 1.4rem;
-    font-size: 0.88rem;
+    background: var(--seal);
+    border: 1px solid var(--seal);
+    color: var(--paper);
+    padding: 0.6rem 1.6rem;
+    font-size: 0.95rem;
     letter-spacing: 0.03em;
     cursor: pointer;
-    transition:
-        background 0.15s ease,
-        color 0.15s ease;
+    transition: background 0.15s ease;
 }
 
 .share-button:hover {
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--seal-deep);
+    border-color: var(--seal-deep);
+}
+
+.share-button:disabled {
+    opacity: 0.6;
+    cursor: progress;
 }

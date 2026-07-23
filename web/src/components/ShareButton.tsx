@@ -1,39 +1,82 @@
 import { useState } from "react";
+import type { CompanyMatch } from "../lib/matching";
+import { generateResultImage } from "../lib/shareImage";
+import { isInAppBrowser } from "../lib/inAppBrowser";
 import "./ShareButton.css";
 
 interface ShareButtonProps {
     userName: string;
     company: string;
+    top: CompanyMatch[];
 }
 
-export function ShareButton({ userName, company }: ShareButtonProps) {
-    const [copied, setCopied] = useState(false);
+type Status = "idle" | "loading" | "shared" | "fallback";
+
+export function ShareButton({ userName, company, top }: ShareButtonProps) {
+    const [status, setStatus] = useState<Status>("idle");
 
     async function handleShare() {
+        setStatus("loading");
+
         const url = window.location.href;
         const text = `${userName}님을 가장 원하는 기업은 ${company}입니다. 과연 당신은? ${url}`;
+        const blob = await generateResultImage(userName, top);
+        const file = blob ? new File([blob], `이름점_${userName}.png`, { type: "image/png" }) : null;
 
-        if (navigator.share) {
+        const canShareFile = !!(file && navigator.canShare?.({ files: [file] }));
+        if (canShareFile || navigator.share) {
             try {
-                await navigator.share({ text });
+                await navigator.share(canShareFile ? { files: [file as File], text } : { text });
+                setStatus("shared");
+                setTimeout(() => setStatus("idle"), 2000);
             } catch {
-                // 사용자가 공유를 취소한 경우
+                setStatus("idle");
             }
             return;
         }
 
+        if (file) {
+            const objectUrl = URL.createObjectURL(file);
+            if (isInAppBrowser()) {
+                window.open(objectUrl, "_blank");
+                setTimeout(() => URL.revokeObjectURL(objectUrl), 30000);
+            } else {
+                const a = document.createElement("a");
+                a.href = objectUrl;
+                a.download = file.name;
+                a.click();
+                URL.revokeObjectURL(objectUrl);
+            }
+        }
+
         try {
             await navigator.clipboard.writeText(text);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
         } catch {
             // 클립보드 접근이 막힌 환경
         }
+
+        setStatus("fallback");
+        setTimeout(() => setStatus("idle"), 3000);
     }
 
+    const label = {
+        idle: "결과 공유하기",
+        loading: "준비 중...",
+        shared: "공유했어요",
+        fallback: isInAppBrowser() ? "새 탭에 이미지 저장 · 문구 복사 완료" : "이미지 저장 · 문구 복사 완료",
+    }[status];
+
     return (
-        <button type="button" className="share-button" onClick={handleShare}>
-            {copied ? "링크가 복사됐어요" : "결과 공유하기"}
-        </button>
+        <div className="share">
+            <button
+                type="button"
+                className="share-button"
+                onClick={handleShare}
+                disabled={status === "loading"}
+            >
+                {label}
+            </button>
+            <p className="share__hint">인스타그램 스토리 등에 이미지로 공유하거나, 문구를 붙여넣을 수 있어요.</p>
+        </div>
     );
 }

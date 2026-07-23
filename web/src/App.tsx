@@ -2,7 +2,6 @@ import { useState, useMemo } from "react";
 import { Hero } from "./components/Hero";
 import { StampReveal } from "./components/StampReveal";
 import { ShareButton } from "./components/ShareButton";
-import { ImageSaveButton } from "./components/ImageSaveButton";
 import { RankingList } from "./components/RankingList";
 import { SectorBars } from "./components/SectorBars";
 import { ThemeSection } from "./components/ThemeSection";
@@ -42,8 +41,11 @@ function App() {
                     />
 
                     <div className="app__share">
-                        <ImageSaveButton userName={report.userName} top={report.overallTop} />
-                        <ShareButton userName={report.userName} company={report.overallTop[0].company} />
+                        <ShareButton
+                            userName={report.userName}
+                            company={report.overallTop[0].company}
+                            top={report.overallTop}
+                        />
                     </div>
 
                     <div className="app__ad">
