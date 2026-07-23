@@ -67,16 +67,13 @@ export function ShareButton({ userName, company, top }: ShareButtonProps) {
     }[status];
 
     return (
-        <div className="share">
-            <button
-                type="button"
-                className="share-button"
-                onClick={handleShare}
-                disabled={status === "loading"}
-            >
-                {label}
-            </button>
-            <p className="share__hint">인스타그램 스토리 등에 이미지로 공유하거나, 문구를 붙여넣을 수 있어요.</p>
-        </div>
+        <button
+            type="button"
+            className="share-button"
+            onClick={handleShare}
+            disabled={status === "loading"}
+        >
+            {label}
+        </button>
     );
 }
