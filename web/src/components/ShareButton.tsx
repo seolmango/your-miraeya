@@ -4,19 +4,18 @@ import "./ShareButton.css";
 interface ShareButtonProps {
     userName: string;
     company: string;
-    score: number;
 }
 
-export function ShareButton({ userName, company, score }: ShareButtonProps) {
+export function ShareButton({ userName, company }: ShareButtonProps) {
     const [copied, setCopied] = useState(false);
 
     async function handleShare() {
-        const text = `${userName}님을 가장 원하는 기업은 ${company}(${score}점)! 내 결과도 확인해보기`;
         const url = window.location.href;
+        const text = `${userName}님을 가장 원하는 기업은 ${company}입니다. 과연 당신은? ${url}`;
 
         if (navigator.share) {
             try {
-                await navigator.share({ text, url });
+                await navigator.share({ text });
             } catch {
                 // 사용자가 공유를 취소한 경우
             }
@@ -24,7 +23,7 @@ export function ShareButton({ userName, company, score }: ShareButtonProps) {
         }
 
         try {
-            await navigator.clipboard.writeText(`${text}\n${url}`);
+            await navigator.clipboard.writeText(text);
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
         } catch {

@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { Hero } from "./components/Hero";
 import { StampReveal } from "./components/StampReveal";
 import { ShareButton } from "./components/ShareButton";
+import { ImageSaveButton } from "./components/ImageSaveButton";
 import { RankingList } from "./components/RankingList";
 import { SectorBars } from "./components/SectorBars";
 import { ThemeSection } from "./components/ThemeSection";
@@ -21,14 +22,18 @@ function App() {
 
     return (
         <div className="app">
+            {report && (
+                <div className="app__topbar">
+                    <button type="button" className="app__back" onClick={() => setUserName(null)}>
+                        ← 다시 검색하기
+                    </button>
+                </div>
+            )}
+
             <Hero onSubmit={setUserName} hasResult={report !== null} />
 
             {report && (
                 <main className="app__results">
-                    <button type="button" className="app__back" onClick={() => setUserName(null)}>
-                        ← 다시 검색하기
-                    </button>
-
                     <StampReveal
                         userName={report.userName}
                         company={report.overallTop[0].company}
@@ -37,11 +42,8 @@ function App() {
                     />
 
                     <div className="app__share">
-                        <ShareButton
-                            userName={report.userName}
-                            company={report.overallTop[0].company}
-                            score={report.overallTop[0].score}
-                        />
+                        <ImageSaveButton userName={report.userName} top={report.overallTop} />
+                        <ShareButton userName={report.userName} company={report.overallTop[0].company} />
                     </div>
 
                     <div className="app__ad">

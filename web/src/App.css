@@ -25,14 +25,25 @@
     padding: 0 1.5rem;
 }
 
+.app__topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+}
+
 .app__back {
     display: block;
+    width: 100%;
+    max-width: 40rem;
     margin: 0 auto;
     background: none;
     border: none;
     color: var(--ink-soft);
     font-size: 0.85rem;
-    padding: 1rem 1.5rem 0;
+    text-align: left;
+    padding: 0.9rem 1.5rem;
     cursor: pointer;
 }
 
@@ -43,6 +54,8 @@
 .app__share {
     display: flex;
     justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
     padding: 0 1.5rem 2.5rem;
 }
 

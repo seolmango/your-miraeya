@@ -107,25 +107,8 @@
     font-size: 0.9rem;
 }
 
-.hero__info-toggle {
-    margin-top: 1.5rem;
-    background: none;
-    border: none;
-    color: var(--ink-soft);
-    font-size: 0.8rem;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    cursor: pointer;
-    opacity: 0.75;
-}
-
-.hero__info-toggle:hover {
-    color: var(--seal);
-    opacity: 1;
-}
-
 .hero__info {
-    margin-top: 0.75rem;
+    margin-top: 1.5rem;
     max-width: 24rem;
     font-size: 0.82rem;
     line-height: 1.6;
@@ -133,4 +116,32 @@
     background: var(--paper-deep);
     padding: 0.9rem 1.1rem;
     text-align: left;
+}
+
+.hero__info strong {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-weight: normal;
+    margin-bottom: 0.25rem;
+}
+
+.hero__info-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex: 0 0 auto;
+}
+
+.hero__info-icon circle {
+    fill: none;
+    stroke: var(--seal);
+    stroke-width: 1.6;
+}
+
+.hero__info-icon text {
+    font-family: var(--font-display);
+    font-size: 11px;
+    fill: var(--seal);
 }

@@ -10,7 +10,6 @@ interface HeroProps {
 export function Hero({ onSubmit, hasResult }: HeroProps) {
     const [value, setValue] = useState("");
     const [error, setError] = useState<string | null>(null);
-    const [showInfo, setShowInfo] = useState(false);
 
     function handleSubmit(event: FormEvent) {
         event.preventDefault();
@@ -49,18 +48,19 @@ export function Hero({ onSubmit, hasResult }: HeroProps) {
                         {error}
                     </p>
                 )}
-                <button
-                    type="button"
-                    className="hero__info-toggle"
-                    aria-expanded={showInfo}
-                    onClick={() => setShowInfo((v) => !v)}
-                >
-                    ? 원리가 뭔가요?
-                </button>
-                {showInfo && (
+                {!hasResult && (
                     <p className="hero__info">
-                        아주 과학적이고 신빙성이 높은 이름점(뭐 한글 발음을 영어로 적던지)을 통해
-                        기업이 날 좋아하는 정도를 구합니다.
+                        <strong>
+                            <svg className="hero__info-icon" viewBox="0 0 20 20" aria-hidden="true">
+                                <circle cx="10" cy="10" r="9" />
+                                <text x="10" y="14" textAnchor="middle">
+                                    ?
+                                </text>
+                            </svg>
+                            원리가 뭔가요?
+                        </strong>
+                        아주 과학적이고 신빙성이 높은 Ireum-Jeom이란 방법을 통해 기업이 날 좋아하는
+                        정도를 구합니다.
                     </p>
                 )}
             </div>

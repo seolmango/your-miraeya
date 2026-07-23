@@ -2,7 +2,7 @@ import { AdSlot } from "./AdSlot";
 import "./Footer.css";
 
 const CONTACT_EMAIL = "zero2inf.zip@gmail.com";
-const REPO_URL = "https://github.com/your-username/your-miraeya";
+const REPO_URL = "https://github.com/seolmango/your-miraeya";
 
 export function Footer() {
     return (
