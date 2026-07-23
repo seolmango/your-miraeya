@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Hero } from "./components/Hero";
 import { StampReveal } from "./components/StampReveal";
 import { ShareButton } from "./components/ShareButton";
@@ -8,11 +8,33 @@ import { ThemeSection } from "./components/ThemeSection";
 import { CustomCheck } from "./components/CustomCheck";
 import { AdSlot } from "./components/AdSlot";
 import { Footer } from "./components/Footer";
+import { InAppBrowserNotice } from "./components/InAppBrowserNotice";
 import { computeMatchReport } from "./lib/matching";
 import "./App.css";
 
+function nameFromUrl(): string | null {
+    return new URLSearchParams(window.location.search).get("name");
+}
+
 function App() {
-    const [userName, setUserName] = useState<string | null>(null);
+    const [userName, setUserNameState] = useState<string | null>(() => nameFromUrl());
+
+    useEffect(() => {
+        function handlePopState() {
+            setUserNameState(nameFromUrl());
+        }
+        window.addEventListener("popstate", handlePopState);
+        return () => window.removeEventListener("popstate", handlePopState);
+    }, []);
+
+    function setUserName(name: string | null) {
+        setUserNameState(name);
+        const params = new URLSearchParams(window.location.search);
+        if (name) params.set("name", name);
+        else params.delete("name");
+        const query = params.toString();
+        window.history.pushState({}, "", `${window.location.pathname}${query ? `?${query}` : ""}`);
+    }
 
     const report = useMemo(() => {
         if (!userName) return null;
@@ -21,6 +43,8 @@ function App() {
 
     return (
         <div className="app">
+            <InAppBrowserNotice />
+
             {report && (
                 <div className="app__topbar">
                     <button type="button" className="app__back" onClick={() => setUserName(null)}>
