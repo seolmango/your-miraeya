@@ -1,0 +1,33 @@
+.in-app-notice {
+    background: var(--seal-soft);
+    border-bottom: 1px solid var(--seal);
+    padding: 0.7rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.in-app-notice__text {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--seal-deep);
+    max-width: 32rem;
+}
+
+.in-app-notice__button {
+    flex: 0 0 auto;
+    background: var(--seal);
+    color: var(--paper);
+    border: none;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.78rem;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.in-app-notice__button:hover {
+    background: var(--seal-deep);
+}
