@@ -19,8 +19,13 @@ export function RankingList({ title, subtitle, items }: RankingListProps) {
                     <li className="ranking__row" key={item.company}>
                         <span className="ranking__rank">{String(index + 1).padStart(2, "0")}</span>
                         <span className="ranking__name">
-                            {item.company}
-                            {item.original && <span className="orig-tag"> ({item.original})</span>}
+                            <span className="ranking__name-text">
+                                {item.company}
+                                {item.original && <span className="orig-tag"> ({item.original})</span>}
+                            </span>
+                            <span className="ranking__detail">
+                                나→기업 {item.userToCompany} · 기업→나 {item.companyToUser}
+                            </span>
                         </span>
                         <span className="ranking__bar-track">
                             <span

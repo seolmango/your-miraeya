@@ -105,12 +105,12 @@ export async function generateResultImage(userName: string, top: CompanyMatch[])
     ctx.textAlign = "center";
     ctx.font = '400 18px "Pretendard"';
     ctx.fillStyle = INK_SOFT;
-    ctx.fillText("나를 원하는 기업 알아보기", WIDTH / 2, 110);
+    ctx.fillText("이름이 정해준 내 평생직장 찾기", WIDTH / 2, 110);
 
     ctx.font = '400 28px "Pretendard"';
     ctx.fillStyle = INK;
     ctx.fillText(
-        truncateToWidth(ctx, `${userName}님을 가장 원하는 기업은`, WIDTH - 120),
+        truncateToWidth(ctx, `${userName}님의 이름이 정해준 평생직장은`, WIDTH - 120),
         WIDTH / 2,
         185,
     );
@@ -145,6 +145,16 @@ export async function generateResultImage(userName: string, top: CompanyMatch[])
     ctx.fillText(String(top1.score), WIDTH / 2, circleY + 24);
     ctx.font = '700 20px "Song Myung"';
     ctx.fillText("점", WIDTH / 2, circleY + 60);
+
+    const top1Percentile = Math.max(0.1, Math.round((100 - top1.percentile) * 10) / 10);
+    ctx.textAlign = "center";
+    ctx.font = '400 16px "Pretendard"';
+    ctx.fillStyle = INK_SOFT;
+    ctx.fillText(`전체 기업 중 상위 ${top1Percentile}%의 매칭 점수입니다`, WIDTH / 2, 595);
+
+    ctx.font = '600 18px "Pretendard"';
+    ctx.fillStyle = INK;
+    ctx.fillText(`나→기업 ${top1.userToCompany} · 기업→나 ${top1.companyToUser}`, WIDTH / 2, 624);
 
     ctx.textAlign = "center";
     ctx.font = '400 20px "Pretendard"';

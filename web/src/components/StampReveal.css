@@ -100,3 +100,41 @@
         animation: none;
     }
 }
+
+.stamp__percentile {
+    font-size: 0.85rem;
+    color: var(--seal-deep);
+    margin-bottom: 1rem;
+}
+
+.stamp__breakdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+}
+
+.stamp__breakdown strong {
+    color: var(--ink);
+    font-family: var(--font-display);
+}
+
+.stamp__breakdown-divider {
+    width: 2rem;
+    height: 1px;
+    background: var(--line);
+}
+
+@media (min-width: 34rem) {
+    .stamp__breakdown {
+        flex-direction: row;
+        gap: 0.9rem;
+    }
+
+    .stamp__breakdown-divider {
+        width: 1px;
+        height: 0.9rem;
+    }
+}

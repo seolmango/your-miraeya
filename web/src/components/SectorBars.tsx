@@ -14,7 +14,9 @@ export function SectorBars({ results }: SectorBarsProps) {
         <section className="sectors">
             <div className="sectors__head">
                 <h2 className="sectors__title">섹터별 선호도</h2>
-                <p className="sectors__subtitle">섹터가 나를 원하는 평균 점수가 높은 순서로 줄 세웠습니다</p>
+                <p className="sectors__subtitle">
+                    섹터의 평균 종합 매칭 점수(나→기업 · 기업→나 평균)가 높은 순서로 줄 세웠습니다
+                </p>
             </div>
             <ul className="sectors__list">
                 {results.map((result) => {

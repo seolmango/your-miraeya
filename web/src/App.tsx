@@ -1,8 +1,11 @@
 import { useState, useMemo, useEffect } from "react";
 import { Hero } from "./components/Hero";
+import { AlgorithmExplainer } from "./components/AlgorithmExplainer";
 import { StampReveal } from "./components/StampReveal";
+import { ScoreDistribution } from "./components/ScoreDistribution";
 import { ShareButton } from "./components/ShareButton";
 import { RankingList } from "./components/RankingList";
+import { CrushRankings } from "./components/CrushRankings";
 import { SectorBars } from "./components/SectorBars";
 import { ThemeSection } from "./components/ThemeSection";
 import { CustomCheck } from "./components/CustomCheck";
@@ -55,6 +58,8 @@ function App() {
 
             <Hero onSubmit={setUserName} hasResult={report !== null} />
 
+            {!report && <AlgorithmExplainer />}
+
             {report && (
                 <main className="app__results">
                     <StampReveal
@@ -62,6 +67,9 @@ function App() {
                         company={report.overallTop[0].company}
                         original={report.overallTop[0].original}
                         score={report.overallTop[0].score}
+                        percentile={report.overallTop[0].percentile}
+                        userToCompany={report.overallTop[0].userToCompany}
+                        companyToUser={report.overallTop[0].companyToUser}
                     />
 
                     <div className="app__share">
@@ -72,14 +80,25 @@ function App() {
                         />
                     </div>
 
+                    <ScoreDistribution
+                        distribution={report.distribution}
+                        topCompany={report.overallTop[0].company}
+                        topScore={report.overallTop[0].score}
+                    />
+
                     <div className="app__ad">
                         <AdSlot label="본문 상단 광고" />
                     </div>
 
                     <RankingList
                         title="전체 선호도 랭킹"
-                        subtitle="모든 기업을 통틀어 나를 가장 원하는 순서"
+                        subtitle="모든 기업을 통틀어 종합 매칭 점수가 가장 높은 순서"
                         items={report.overallTop}
+                    />
+
+                    <CrushRankings
+                        myOneSidedLove={report.crushes.myOneSidedLove}
+                        theirOneSidedLove={report.crushes.theirOneSidedLove}
                     />
 
                     <SectorBars results={report.sectorResults} />

@@ -8,7 +8,12 @@ interface CustomCheckProps {
 
 export function CustomCheck({ userName }: CustomCheckProps) {
     const [value, setValue] = useState("");
-    const [result, setResult] = useState<{ company: string; score: number } | null>(null);
+    const [result, setResult] = useState<{
+        company: string;
+        score: number;
+        userToCompany: number;
+        companyToUser: number;
+    } | null>(null);
     const [error, setError] = useState<string | null>(null);
 
     function handleSubmit(event: FormEvent) {
@@ -20,7 +25,14 @@ export function CustomCheck({ userName }: CustomCheckProps) {
             return;
         }
         setError(null);
-        setResult({ company: trimmed, score: nameJeom(trimmed, userName) });
+        const userToCompany = nameJeom(userName, trimmed);
+        const companyToUser = nameJeom(trimmed, userName);
+        setResult({
+            company: trimmed,
+            score: Math.round((userToCompany + companyToUser) / 2),
+            userToCompany,
+            companyToUser,
+        });
     }
 
     return (
@@ -28,7 +40,7 @@ export function CustomCheck({ userName }: CustomCheckProps) {
             <div className="custom-check__head">
                 <h2 className="custom-check__title">원하는 기업이 없나요?</h2>
                 <p className="custom-check__subtitle">
-                    기업 이름을 직접 입력해서 그 기업이 나를 얼마나 원하는지 확인해보세요
+                    기업 이름을 직접 입력해서 나와 그 기업의 종합 매칭 점수를 확인해보세요
                 </p>
             </div>
             <form className="custom-check__form" onSubmit={handleSubmit}>
@@ -50,10 +62,22 @@ export function CustomCheck({ userName }: CustomCheckProps) {
                 </p>
             )}
             {result && (
-                <p className="custom-check__result" aria-live="polite">
-                    <strong>{result.company}</strong>이(가) <strong>{userName}</strong> 님을 원하는 정도는{" "}
-                    <strong className="custom-check__score">{result.score}점</strong>
-                </p>
+                <div className="custom-check__result" aria-live="polite">
+                    <p>
+                        <strong>{userName}</strong> 님과 <strong>{result.company}</strong>의 종합 매칭 점수는{" "}
+                        <strong className="custom-check__score">{result.score}점</strong>
+                    </p>
+                    <ul className="custom-check__directions">
+                        <li>
+                            내가 {result.company}을(를) 좋아하는 정도{" "}
+                            <strong>{result.userToCompany}점</strong>
+                        </li>
+                        <li>
+                            {result.company}이(가) 나를 좋아하는 정도{" "}
+                            <strong>{result.companyToUser}점</strong>
+                        </li>
+                    </ul>
+                </div>
             )}
         </section>
     );

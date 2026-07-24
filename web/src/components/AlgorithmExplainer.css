@@ -1,0 +1,308 @@
+.algo {
+    position: relative;
+}
+
+.algo__sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0 1.5rem;
+}
+
+.algo__marker {
+    position: absolute;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+}
+
+.algo__rail {
+    position: absolute;
+    top: 50%;
+    right: 2.5rem;
+    transform: translateY(-50%);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    height: 12rem;
+    z-index: 2;
+}
+
+@media (min-width: 64rem) {
+    .algo__rail {
+        display: flex;
+    }
+}
+
+.algo__rail-track {
+    position: relative;
+    width: 2px;
+    flex: 1;
+    background: var(--line);
+}
+
+.algo__rail-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--seal);
+    transition: height 0.1s linear;
+}
+
+.algo__rail-dots {
+    list-style: none;
+    margin: 0.6rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.algo__rail-dots li {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--line);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.algo__rail-dots li.is-active {
+    background: var(--seal);
+    transform: scale(1.5);
+}
+
+.algo__stage {
+    width: 100%;
+    max-width: 34rem;
+}
+
+.algo-panel {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: 0 1px 0 var(--line);
+    padding: 2rem 1.75rem;
+    animation: algo-fade-up 0.5s ease both;
+}
+
+@keyframes algo-fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.algo-kicker {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--seal);
+    margin-bottom: 0.6rem;
+}
+
+.algo-title {
+    font-size: clamp(1.25rem, 3.6vw, 1.6rem);
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 0.9rem;
+    word-break: keep-all;
+}
+
+.algo-desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 1.25rem;
+    word-break: keep-all;
+}
+
+.algo-desc strong {
+    color: var(--ink);
+}
+
+.algo-desc__fine-print {
+    font-size: 0.6em;
+    color: var(--ink-soft);
+    vertical-align: baseline;
+}
+
+.algo-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.algo-badge {
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
+    padding: 0.3rem 0.6rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+}
+
+.algo-card {
+    background: var(--paper-deep);
+    padding: 1rem;
+}
+
+.algo-card__label {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+}
+
+.algo-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+}
+
+.algo-table th,
+.algo-table td {
+    padding: 0.4rem 0.3rem;
+    text-align: center;
+    border-bottom: 1px dashed var(--line);
+}
+
+.algo-table th {
+    color: var(--ink-soft);
+    font-weight: normal;
+    font-size: 0.72rem;
+}
+
+.algo-table__strokes {
+    font-family: var(--font-display);
+    color: var(--seal);
+}
+
+.algo-sequence {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.algo-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.1rem;
+    height: 2.1rem;
+    padding: 0 0.4rem;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    background: var(--paper-deep);
+    color: var(--ink);
+    border: 1px solid var(--line);
+}
+
+.algo-chip--a {
+    border-color: var(--seal);
+    color: var(--seal);
+}
+
+.algo-chip--b {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+.algo-chip--legend {
+    min-width: auto;
+    height: auto;
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 0.7rem;
+    margin: 0 0.2rem 0 0.6rem;
+}
+
+.algo-chip--legend:first-child {
+    margin-left: 0;
+}
+
+.algo-caption {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+}
+
+.algo-rounds {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.algo-rounds__row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.algo-rounds__label {
+    flex: 0 0 4.2rem;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+}
+
+.algo-final {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.algo-final__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.55rem 0.75rem;
+    background: var(--paper-deep);
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+}
+
+.algo-final__row strong {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--ink);
+}
+
+.algo-final__row--composite {
+    background: var(--seal-soft);
+}
+
+.algo-final__row--composite strong {
+    color: var(--seal);
+    font-size: 1.4rem;
+}
+
+.algo-cta {
+    background: var(--seal);
+    color: var(--paper);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.algo-cta:hover {
+    background: var(--seal-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .algo-panel {
+        animation: none;
+    }
+}

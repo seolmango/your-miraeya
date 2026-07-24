@@ -1,0 +1,162 @@
+.score-dist {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+}
+
+@media (min-width: 64rem) {
+    .score-dist {
+        max-width: 44rem;
+    }
+}
+
+.score-dist__head {
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.score-dist__title {
+    font-size: 1.6rem;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+}
+
+.score-dist__subtitle {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    word-break: keep-all;
+}
+
+.score-dist__stats {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+}
+
+.score-dist__stat {
+    background: var(--paper-deep);
+    padding: 0.55rem 1rem;
+    min-width: 6.5rem;
+    text-align: center;
+}
+
+.score-dist__stat-label {
+    display: block;
+    font-size: 0.68rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.2rem;
+}
+
+.score-dist__stat-value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--ink);
+}
+
+.score-dist__stat-value--seal {
+    color: var(--seal);
+}
+
+.score-dist__legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.75rem;
+}
+
+.score-dist__legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.score-dist__swatch {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+.score-dist__swatch--bar {
+    background: var(--ink-soft);
+    opacity: 0.4;
+}
+
+.score-dist__swatch--top {
+    background: var(--seal);
+}
+
+.score-dist__swatch--curve {
+    width: 14px;
+    height: 0;
+    border-top: 2px dashed var(--gold);
+    border-radius: 0;
+}
+
+.score-dist__chart-wrap {
+    position: relative;
+    background: var(--paper-deep);
+    padding: 0.75rem 0.5rem 0.5rem;
+}
+
+.score-dist__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.score-dist__bar {
+    fill: var(--ink-soft);
+    opacity: 0.4;
+    transition: opacity 0.15s ease;
+}
+
+.score-dist__bar:hover {
+    opacity: 0.6;
+}
+
+.score-dist__bar--top {
+    fill: var(--seal);
+    opacity: 1;
+}
+
+.score-dist__bar--top:hover {
+    fill: var(--seal-deep);
+    opacity: 1;
+}
+
+.score-dist__gridline {
+    stroke: var(--line);
+    stroke-width: 1;
+}
+
+.score-dist__axis-text {
+    fill: var(--ink-soft);
+    font-size: 9px;
+}
+
+.score-dist__curve {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 2;
+    stroke-dasharray: 5 4;
+}
+
+.score-dist__tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 0.72rem;
+    padding: 0.3rem 0.55rem;
+    border-radius: 4px;
+    transform: translate(-50%, -110%);
+    white-space: nowrap;
+    z-index: 2;
+}

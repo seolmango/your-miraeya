@@ -112,12 +112,21 @@
 .hero__info {
     margin-top: 1.5rem;
     max-width: 24rem;
+    width: 100%;
+    font-family: var(--font-body);
     font-size: 0.82rem;
     line-height: 1.6;
     color: var(--ink-soft);
     background: var(--paper-deep);
+    border: none;
     padding: 0.9rem 1.1rem;
     text-align: left;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.hero__info:hover {
+    background: var(--seal-soft);
 }
 
 .hero__info strong {

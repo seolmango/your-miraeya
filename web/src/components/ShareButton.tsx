@@ -19,7 +19,7 @@ export function ShareButton({ userName, company, top }: ShareButtonProps) {
         setStatus("loading");
 
         const url = window.location.href;
-        const text = `${userName}님을 가장 원하는 기업은 ${company}입니다. 과연 당신은? ${url}`;
+        const text = `${userName}님의 이름이 정해준 평생직장은 ${company}입니다. 과연 당신은? ${url}`;
         const blob = await generateResultImage(userName, top);
         const file = blob ? new File([blob], `이름점_${userName}.png`, { type: "image/png" }) : null;
 
