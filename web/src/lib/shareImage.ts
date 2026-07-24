@@ -19,6 +19,15 @@ async function ensureFonts(): Promise<void> {
     await document.fonts.ready;
 }
 
+function displayUrl(): string {
+    const raw = window.location.href.replace(/^https?:\/\//, "");
+    try {
+        return decodeURIComponent(raw);
+    } catch {
+        return raw;
+    }
+}
+
 function truncateToWidth(ctx: CanvasRenderingContext2D, text: string, maxWidth: number): string {
     if (ctx.measureText(text).width <= maxWidth) return text;
     let end = text.length;
@@ -153,7 +162,7 @@ export async function generateResultImage(userName: string, top: CompanyMatch[])
     ctx.fillStyle = INK_SOFT;
     ctx.globalAlpha = 0.75;
     ctx.fillText(
-        truncateToWidth(ctx, window.location.href.replace(/^https?:\/\//, ""), WIDTH - 120),
+        truncateToWidth(ctx, displayUrl(), WIDTH - 120),
         WIDTH / 2,
         HEIGHT - 40,
     );

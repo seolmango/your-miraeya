@@ -90,7 +90,7 @@ function App() {
 
                     <ThemeSection results={report.themeResults} />
 
-                    <CustomCheck userName={report.userName} />
+                    <CustomCheck key={report.userName} userName={report.userName} />
                 </main>
             )}
 
