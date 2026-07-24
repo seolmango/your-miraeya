@@ -6,9 +6,9 @@ export interface CompanyMatch {
     original: string | null;
     /** 종합 매칭 점수 (나→기업, 기업→나 평균) */
     score: number;
-    /** 내가 이 기업을 좋아하는 정도 */
+    /** 나→기업: 내가 이 기업을 좋아하는 정도 */
     userToCompany: number;
-    /** 이 기업이 나를 좋아하는 정도 */
+    /** 기업→나: 이 기업이 나를 좋아하는 정도 */
     companyToUser: number;
     /** 전체 기업 중 이 점수보다 낮은 기업의 비율 (%) */
     percentile: number;

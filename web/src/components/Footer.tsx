@@ -11,7 +11,7 @@ export function Footer() {
                 <AdSlot label="하단 배너 광고" height={90} />
             </div>
             <p className="site-footer__note">
-                재미로 보는 선호도 테스트입니다. 실제 취업·투자 결정과는 관계가 없어요.
+                재미로 보는 매칭 테스트입니다. 실제 취업·투자 결정과는 관계가 없어요.
             </p>
             <div className="site-footer__links">
                 <a className="site-footer__link" href={`mailto:${CONTACT_EMAIL}`}>

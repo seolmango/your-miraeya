@@ -22,9 +22,9 @@ export function ThemeSection({ results }: ThemeSectionProps) {
     return (
         <section className="theme">
             <div className="theme__head">
-                <h2 className="theme__title">테마별 베스트 매치</h2>
+                <h2 className="theme__title">테마별 베스트 매칭</h2>
                 <p className="theme__subtitle">
-                    시총 랭킹 안에서 종합 매칭 점수(나→기업 · 기업→나 평균)가 가장 높은 곳은 어디일까
+                    시총 랭킹 안에서 종합 매칭 점수(나→기업 · 기업→나 평균)가 가장 높은 곳을 모아봤습니다
                 </p>
             </div>
             <div className="theme__tabs" role="tablist">

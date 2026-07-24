@@ -53,13 +53,13 @@ export function ResultsView({ report, onReady }: ResultsViewProps) {
             </div>
 
             <RankingList
-                title="전체 선호도 랭킹"
+                title="전체 매칭 랭킹"
                 subtitle="모든 기업을 통틀어 종합 매칭 점수가 가장 높은 순서"
                 items={report.overallTop}
             />
 
             <RankingList
-                title="최악의 궁합"
+                title="최악의 매칭 랭킹"
                 subtitle="종합 매칭 점수가 가장 낮은, 인연이 아니었던 기업들"
                 items={report.overallBottom}
             />

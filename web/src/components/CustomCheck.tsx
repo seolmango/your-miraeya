@@ -53,7 +53,7 @@ export function CustomCheck({ userName }: CustomCheckProps) {
                     maxLength={20}
                 />
                 <button className="custom-check__button" type="submit">
-                    확인
+                    확인하기
                 </button>
             </form>
             {error && (
@@ -69,12 +69,10 @@ export function CustomCheck({ userName }: CustomCheckProps) {
                     </p>
                     <ul className="custom-check__directions">
                         <li>
-                            내가 {result.company}을(를) 좋아하는 정도{" "}
-                            <strong>{result.userToCompany}점</strong>
+                            나→기업 <strong>{result.userToCompany}점</strong>
                         </li>
                         <li>
-                            {result.company}이(가) 나를 좋아하는 정도{" "}
-                            <strong>{result.companyToUser}점</strong>
+                            기업→나 <strong>{result.companyToUser}점</strong>
                         </li>
                     </ul>
                 </div>

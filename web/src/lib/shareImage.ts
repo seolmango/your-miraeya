@@ -159,7 +159,7 @@ export async function generateResultImage(userName: string, top: CompanyMatch[])
     ctx.textAlign = "center";
     ctx.font = '400 20px "Pretendard"';
     ctx.fillStyle = INK_SOFT;
-    ctx.fillText("전체 선호도 랭킹 TOP 10", WIDTH / 2, 645);
+    ctx.fillText("전체 매칭 랭킹 TOP 10", WIDTH / 2, 645);
 
     let y = 700;
     top.slice(0, 10).forEach((item, index) => {

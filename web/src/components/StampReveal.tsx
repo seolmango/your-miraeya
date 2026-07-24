@@ -43,11 +43,11 @@ export function StampReveal({
             <p className="stamp__percentile">전체 기업 중 상위 {topRatio}%의 매칭 점수입니다</p>
             <div className="stamp__breakdown">
                 <span>
-                    내가 {company}을(를) 좋아하는 정도 <strong>{userToCompany}</strong>
+                    나→기업 <strong>{userToCompany}</strong>
                 </span>
                 <span className="stamp__breakdown-divider" aria-hidden="true" />
                 <span>
-                    {company}이(가) 나를 좋아하는 정도 <strong>{companyToUser}</strong>
+                    기업→나 <strong>{companyToUser}</strong>
                 </span>
             </div>
         </section>

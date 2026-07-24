@@ -53,7 +53,7 @@ export function CrushRankings({ myOneSidedLove, theirOneSidedLove }: CrushRankin
             <div className="crush__head">
                 <h2 className="crush__title">짝사랑 지수</h2>
                 <p className="crush__subtitle">
-                    같은 궁합이라도 마음의 크기는 다른 법. 누가 더 좋아하는지 따져봤습니다
+                    같은 매칭 점수라도 마음의 크기는 다른 법. 누가 더 좋아하는지 따져봤습니다
                 </p>
             </div>
             <div className="crush__grid">
