@@ -49,6 +49,7 @@ export interface ScoreDistribution {
 export interface MatchReport {
     userName: string;
     overallTop: CompanyMatch[];
+    overallBottom: CompanyMatch[];
     sectorResults: SectorResult[];
     themeResults: ThemeResult[];
     crushes: CrushReport;
@@ -105,6 +106,11 @@ export function computeMatchReport(userName: string, topN = 10): MatchReport | n
         .slice(0, topN)
         .map(withPercentile);
 
+    const overallBottom = [...allMatches]
+        .sort((a, b) => a.score - b.score)
+        .slice(0, topN)
+        .map(withPercentile);
+
     const sectorResults: SectorResult[] = sectorGroups
         .map((group) => {
             const all = group.companies
@@ -143,6 +149,7 @@ export function computeMatchReport(userName: string, topN = 10): MatchReport | n
     return {
         userName,
         overallTop,
+        overallBottom,
         sectorResults,
         themeResults,
         crushes: { myOneSidedLove, theirOneSidedLove },

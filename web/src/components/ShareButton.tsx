@@ -44,8 +44,11 @@ export function ShareButton({ userName, company, top }: ShareButtonProps) {
                 const a = document.createElement("a");
                 a.href = objectUrl;
                 a.download = file.name;
+                document.body.appendChild(a);
                 a.click();
-                URL.revokeObjectURL(objectUrl);
+                a.remove();
+                // 즉시 해제하면 다운로드가 시작되기 전에 URL이 사라지는 브라우저가 있다
+                setTimeout(() => URL.revokeObjectURL(objectUrl), 10000);
             }
         }
 

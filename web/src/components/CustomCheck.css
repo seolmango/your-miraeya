@@ -75,6 +75,7 @@
     font-size: 1rem;
     color: var(--ink-soft);
     line-height: 1.7;
+    overflow-wrap: anywhere;
 }
 
 .custom-check__result strong {

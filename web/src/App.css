@@ -6,6 +6,8 @@
 
 .app__results {
     animation: fade-up 0.4s ease both;
+    /* sticky 상단바(.app__topbar)에 결과 상단이 가려지지 않도록 스크롤 목표 지점을 보정한다 */
+    scroll-margin-top: 3.25rem;
 }
 
 @keyframes fade-up {

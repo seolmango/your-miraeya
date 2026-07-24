@@ -10,8 +10,15 @@ const JONGSUNG_STROKES = [
     9, 0, 1, 2, 0, 3, 3, 1, 2, 3, 5, 6, 4, 5, 6, 5, 2, 3, 5, 1, 3, 0, 2, 3, 1, 2, 3, 2
 ];
 
+/**
+ * 이름 길이 상한. 접기 연산이 글자 수에 대해 O(n²)이라, 상한이 없으면
+ * ?name= 에 초장문 한글을 담은 공유 링크만으로 브라우저를 멈추게 할 수 있다.
+ * 가장 긴 기업명이 15자이므로 실사용에는 영향이 없다.
+ */
+export const MAX_NAME_LENGTH = 32;
+
 function normalize(name: string): string {
-    return name.replace(/[^가-힣]/g, "");
+    return name.replace(/[^가-힣]/g, "").slice(0, MAX_NAME_LENGTH);
 }
 
 function getStrokes(ch: string): number {

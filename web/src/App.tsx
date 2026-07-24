@@ -1,26 +1,28 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef, useCallback, lazy, Suspense } from "react";
 import { Hero } from "./components/Hero";
-import { AlgorithmExplainer } from "./components/AlgorithmExplainer";
-import { StampReveal } from "./components/StampReveal";
-import { ScoreDistribution } from "./components/ScoreDistribution";
-import { ShareButton } from "./components/ShareButton";
-import { RankingList } from "./components/RankingList";
-import { CrushRankings } from "./components/CrushRankings";
-import { SectorBars } from "./components/SectorBars";
-import { ThemeSection } from "./components/ThemeSection";
-import { CustomCheck } from "./components/CustomCheck";
-import { AdSlot } from "./components/AdSlot";
 import { Footer } from "./components/Footer";
 import { InAppBrowserNotice } from "./components/InAppBrowserNotice";
 import { computeMatchReport } from "./lib/matching";
+import { isHangulName, MAX_NAME_LENGTH } from "./lib/nameJeom";
+
+// 랜딩(스크롤리텔링 설명)과 결과 화면은 동시에 보여질 일이 없으므로
+// 서로 다른 청크로 분리해 항상 같이 로드되지 않게 한다.
+const AlgorithmExplainer = lazy(() =>
+    import("./components/AlgorithmExplainer").then((m) => ({ default: m.AlgorithmExplainer })),
+);
+const ResultsView = lazy(() => import("./components/ResultsView").then((m) => ({ default: m.ResultsView })));
 import "./App.css";
 
 function nameFromUrl(): string | null {
-    return new URLSearchParams(window.location.search).get("name");
+    const raw = new URLSearchParams(window.location.search).get("name");
+    if (raw === null) return null;
+    const trimmed = raw.trim().slice(0, MAX_NAME_LENGTH);
+    return isHangulName(trimmed) ? trimmed : null;
 }
 
 function App() {
     const [userName, setUserNameState] = useState<string | null>(() => nameFromUrl());
+    const resultsRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
         function handlePopState() {
@@ -44,6 +46,13 @@ function App() {
         return computeMatchReport(userName);
     }, [userName]);
 
+    // 공유 링크로 바로 들어왔거나 방금(재)검색을 마쳤을 때, 결과가 나타나는 지점으로
+    // 자동 스크롤한다. ResultsView는 lazy 청크라서 실제로 콘텐츠가 그려진 뒤에야
+    // onReady가 불리므로, 스크롤 대상의 높이가 아직 0인 상태에서 스크롤하는 것을 막아준다.
+    const scrollToResults = useCallback(() => {
+        resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, []);
+
     return (
         <div className="app">
             <InAppBrowserNotice />
@@ -58,58 +67,17 @@ function App() {
 
             <Hero onSubmit={setUserName} hasResult={report !== null} />
 
-            {!report && <AlgorithmExplainer />}
+            {!report && (
+                <Suspense fallback={null}>
+                    <AlgorithmExplainer />
+                </Suspense>
+            )}
 
             {report && (
-                <main className="app__results">
-                    <StampReveal
-                        userName={report.userName}
-                        company={report.overallTop[0].company}
-                        original={report.overallTop[0].original}
-                        score={report.overallTop[0].score}
-                        percentile={report.overallTop[0].percentile}
-                        userToCompany={report.overallTop[0].userToCompany}
-                        companyToUser={report.overallTop[0].companyToUser}
-                    />
-
-                    <div className="app__share">
-                        <ShareButton
-                            userName={report.userName}
-                            company={report.overallTop[0].company}
-                            top={report.overallTop}
-                        />
-                    </div>
-
-                    <ScoreDistribution
-                        distribution={report.distribution}
-                        topCompany={report.overallTop[0].company}
-                        topScore={report.overallTop[0].score}
-                    />
-
-                    <div className="app__ad">
-                        <AdSlot label="본문 상단 광고" />
-                    </div>
-
-                    <RankingList
-                        title="전체 선호도 랭킹"
-                        subtitle="모든 기업을 통틀어 종합 매칭 점수가 가장 높은 순서"
-                        items={report.overallTop}
-                    />
-
-                    <CrushRankings
-                        myOneSidedLove={report.crushes.myOneSidedLove}
-                        theirOneSidedLove={report.crushes.theirOneSidedLove}
-                    />
-
-                    <SectorBars results={report.sectorResults} />
-
-                    <div className="app__ad">
-                        <AdSlot label="섹터 결과 하단 광고" />
-                    </div>
-
-                    <ThemeSection results={report.themeResults} />
-
-                    <CustomCheck key={report.userName} userName={report.userName} />
+                <main className="app__results" ref={resultsRef}>
+                    <Suspense fallback={null}>
+                        <ResultsView report={report} onReady={scrollToResults} />
+                    </Suspense>
                 </main>
             )}
 
